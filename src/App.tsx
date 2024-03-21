@@ -1,3 +1,4 @@
+import '@fontsource-variable/nunito-sans';
 import Nav from "./components/Nav";
 import ShoeDetails from "./components/ShoeDetails";
 
