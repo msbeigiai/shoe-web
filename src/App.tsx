@@ -5,6 +5,7 @@ import NewArrivalSection from './components/NewArrivalSection';
 import { SHOE_LIST } from './Constant';
 import Sidebar from './components/Sidebar';
 import { useState } from 'react';
+import CartItem from './components/CartItem';
 
 function App() {
 
@@ -15,8 +16,13 @@ function App() {
       <Nav onClickShoppingButton={() => setIsSidebarOpen(true)} />
       <ShoeDetails />
       <NewArrivalSection items={SHOE_LIST} />
-      <Sidebar isOpen={isSidebarOpen} onClickClose={() => setIsSidebarOpen(false)}>
-        Hi
+      <Sidebar
+        isOpen={isSidebarOpen}
+        onClickClose={() => setIsSidebarOpen(false)}>
+        <h2 className='text-2xl font-bold mb-10'>Cart</h2>
+        <CartItem item={SHOE_LIST[0]} />
+        <CartItem item={SHOE_LIST[1]} />
+        <CartItem item={SHOE_LIST[3]} />
       </Sidebar>
     </div>
   );
