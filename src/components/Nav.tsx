@@ -3,9 +3,13 @@ import NikeLogo from "../assets/nike-logo.svg?react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 
+interface Props {
+  onClickShoppingButton: () => void;
+}
+
 const ROUTES = ["Home", "About", "Services", "Pricing", "Contact"];
 
-const Nav = () => {
+const Nav = ({ onClickShoppingButton }: Props) => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   return (
     <nav className="flex flex-wrap justify-between items-center z-10 relative">
@@ -40,7 +44,10 @@ const Nav = () => {
         </ul>
       </div>
       {/* Cart button */}
-      <div className="button-press-anim fixed left-4 bottom-4 lg:static lg:mr-8">
+      <div
+        className="button-press-anim fixed left-4 bottom-4 lg:static lg:mr-8"
+        onClick={onClickShoppingButton}
+      >
         <div className="flex-center rounded-full bg-white shadow-md h-12 w-12 cursor-pointer">
           <TbShoppingBag />
         </div>
