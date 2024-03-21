@@ -39,7 +39,8 @@ const Nav = () => {
           })}
         </ul>
       </div>
-      <div className="fixed left-4 bottom-4 lg:static lg:mr-8">
+      {/* Cart button */}
+      <div className="button-press-anim fixed left-4 bottom-4 lg:static lg:mr-8">
         <div className="flex-center rounded-full bg-white shadow-md h-12 w-12 cursor-pointer">
           <TbShoppingBag />
         </div>
