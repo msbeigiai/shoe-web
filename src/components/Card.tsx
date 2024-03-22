@@ -1,13 +1,16 @@
 import { ItemType } from "../Constant"
 
 interface Props {
-  item: ItemType
+  item: ItemType;
+  onClick: (item: ItemType) => void;
 }
 
 
-const Card = ({ item }: Props) => {
+const Card = ({ item, onClick }: Props) => {
   return (
-    <div className={`${item.className} max-w-xl transform transition hover:scale-105 cursor-pointer`}>
+    <div
+      onClick={() => onClick(item)}
+      className={`${item.className} max-w-xl transform transition hover:scale-105 cursor-pointer`}>
       <div className="p-8">
         <div className="text-2xl font-bold">
           {item.title}
