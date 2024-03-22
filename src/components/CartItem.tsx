@@ -5,9 +5,10 @@ import Select from "./Select";
 
 interface Props {
   item: FakeCart;
+  onClickTrash: (productId: number) => void;
 }
 
-const CartItem = ({ item: { product, qty, size } }: Props) => {
+const CartItem = ({ item: { product, qty, size }, onClickTrash }: Props) => {
   return (
     <div className="cursor-pointer p-2 hover:bg-[#DAFFA2] bg-gray-50 space-y-2 dark:bg-transparent
      dark:hover:bg-night-50 ">
@@ -34,7 +35,9 @@ const CartItem = ({ item: { product, qty, size } }: Props) => {
             <Select value={qty} title="" options={QTY} className={"w-16 p-1 pl-2"} onChange={() => { }} />
           </div>
         </div>
-        <button>
+        <button
+          onClick={() => onClickTrash(product.id)}
+        >
           <CiTrash size={25} className="text-black dark:text-white" />
         </button>
       </div>
