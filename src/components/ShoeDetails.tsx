@@ -34,8 +34,8 @@ const ShoeDetails = () => {
           <div className="text-3xl font-extrabold md:text-6xl">
             100 $
           </div>
-          <Select title={"QTY"} options={QTY} />
-          <Select title={"SIZE"} options={SIZES} />
+          <Select title={"QTY"} options={QTY} className="" />
+          <Select title={"SIZE"} options={SIZES} className="" />
         </div>
         {/* Shoe buttons and links */}
         <div className="space-x-10">
