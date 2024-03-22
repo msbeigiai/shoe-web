@@ -20,9 +20,6 @@ const Cart = ({ cartItems }: Props) => {
           <li key={cartItem.product.id}><CartItem item={cartItem} /></li>)
         }
       </ul>
-      {/* <CartItem item={SHOE_LIST[0]} />
-      <CartItem item={SHOE_LIST[1]} />
-      <CartItem item={SHOE_LIST[3]} /> */}
     </div>
   )
 }
