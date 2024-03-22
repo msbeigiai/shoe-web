@@ -10,14 +10,14 @@ const Sidebar = ({ children, isOpen, onClickClose }: Props) => {
   return (
     <div>
       <div
-        className={`overflow-y-auto p-5 z-50 h-full w-full shadow-lg md:w-[50%] lg:w-[35%]
+        className={`dark:bg-night overflow-y-auto p-5 z-50 h-full w-full shadow-lg md:w-[50%] lg:w-[35%]
          bg-white fixed top-0 right-0 transition transform duration-300
        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <button
           onClick={onClickClose}
           className="absolute right-4 top-4 p-2
-          text-black font-bold cursor-pointer rounded-full border border-gray-300"
+          text-black font-bold cursor-pointer rounded-full border border-gray-300 dark:text-white"
         >
           <AiOutlineClose />
         </button>

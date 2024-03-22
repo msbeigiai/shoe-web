@@ -14,16 +14,21 @@ const Nav = ({ onClickShoppingButton }: Props) => {
   return (
     <nav className="flex flex-wrap justify-between items-center z-10 relative">
       <a href="#">
-        <NikeLogo className="h-20 w-20" />
+        <NikeLogo className="h-20 w-20 dark:fill-white" />
       </a>
+      {/* Burger button */}
       <button
         onClick={() => setIsMobileMenu(!isMobileMenu)}
-        className="lg:hidden hover:bg-gray=100 p-2 focus:ring-2 focus:ring-gray-200 rounded-lg"
+        className="dark:text-gray-400 dark:hover:bg-gray-700
+         lg:hidden hover:bg-gray=100 p-2 focus:ring-2 focus:ring-gray-200 rounded-lg"
       >
         <RxHamburgerMenu size={25} />
       </button>
       <div className={`${isMobileMenu || "hidden"} w-full lg:w-auto lg:block`}>
-        <ul className="lg:space-x-8 flex flex-col lg:flex-row bg-gray-50 text-lg border border-gray-100 rounded-lg p-4 lg:bg-transparent lg:border-none">
+        <ul
+          className="lg:space-x-8 flex flex-col lg:flex-row
+           bg-gray-50 text-lg border border-gray-100 rounded-lg
+            p-4 lg:bg-transparent lg:border-none lg:dark:text-white">
           {ROUTES.map((route, index) => {
             return (
               <li
