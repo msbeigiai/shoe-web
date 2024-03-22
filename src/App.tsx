@@ -1,14 +1,22 @@
 import '@fontsource-variable/nunito-sans';
-import Nav from "./components/Nav";
-import ShoeDetails from "./components/ShoeDetails";
-import NewArrivalSection from './components/NewArrivalSection';
-import { SHOE_LIST } from './Constant';
-import Sidebar from './components/Sidebar';
 import { useState } from 'react';
-import CartItem from './components/CartItem';
+import Cart from './components/Cart';
+import Nav from "./components/Nav";
+import NewArrivalSection from './components/NewArrivalSection';
+import ShoeDetails from "./components/ShoeDetails";
+import Sidebar from './components/Sidebar';
+import { SHOE_LIST } from './Constant';
+
+
+const FAKE_CART_ITEMS = SHOE_LIST.map(shoe => {
+  return {
+    product: shoe,
+    qty: 1,
+    size: 44
+  }
+});
 
 function App() {
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -19,10 +27,7 @@ function App() {
       <Sidebar
         isOpen={isSidebarOpen}
         onClickClose={() => setIsSidebarOpen(false)}>
-        <h2 className='text-2xl font-bold mb-10'>Cart</h2>
-        <CartItem item={SHOE_LIST[0]} />
-        <CartItem item={SHOE_LIST[1]} />
-        <CartItem item={SHOE_LIST[3]} />
+        <Cart cartItems={FAKE_CART_ITEMS} />
       </Sidebar>
     </div>
   );

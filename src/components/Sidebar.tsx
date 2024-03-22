@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 interface Props {
-  children: ReactElement[];
+  children: ReactElement;
   isOpen: boolean;
   onClickClose: () => void;
 }

@@ -5,14 +5,15 @@ interface Props {
   title: string;
   options: number[];
   className: string;
+  defaultValue: number;
 }
 
-const Select = ({ title, options, className }: Props) => {
+const Select = ({ title, options, className, defaultValue }: Props) => {
 
   return (
     <div className="relative">
       <select
-        defaultValue={""}
+        defaultValue={defaultValue || ""}
         className={twMerge(`w-24 appearance-none border bg-white border-gray-300 p-4 ${className}`)}
       >
         <option value="" disabled hidden>
