@@ -27,11 +27,11 @@ const CartItem = ({ item: { product, qty, size } }: Props) => {
         <div className="flex space-x-6">
           <div>
             <div className="font-bold dark:text-white">SIZE</div>
-            <Select defaultValue={size} title="" options={SIZES} className={"w-16 p-1 pl-2"} />
+            <Select value={size} title="" options={SIZES} className={"w-16 p-1 pl-2"} onChange={() => { }} />
           </div>
           <div>
             <div className="font-bold dark:text-white ">QTY</div>
-            <Select defaultValue={qty} title="" options={QTY} className={"w-16 p-1 pl-2"} />
+            <Select value={qty} title="" options={QTY} className={"w-16 p-1 pl-2"} onChange={() => { }} />
           </div>
         </div>
         <button>

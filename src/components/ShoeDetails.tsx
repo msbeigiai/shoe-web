@@ -1,12 +1,20 @@
-import nike1 from "../assets/n1-min.png";
+import { useState } from "react";
 import { ItemType, QTY, SIZES } from "../Constant";
 import Select from "./Select";
 
 interface Props {
   shoe: ItemType;
+  onClickAdd: (product: ItemType, qty: number, size: number) => void;
 }
 
-const ShoeDetails = ({ shoe }: Props) => {
+interface Form {
+  size: number;
+  qty: number;
+}
+
+const ShoeDetails = ({ shoe, onClickAdd }: Props) => {
+  const [form, setForm] = useState<Form>({ size: 0, qty: 0 })
+
   return (
     <div className="flex flex-col lg:flex-row-reverse space-y-4 dark:text-white">
       {/* Shoe image */}
@@ -36,12 +44,13 @@ const ShoeDetails = ({ shoe }: Props) => {
           <div className="text-3xl font-extrabold md:text-6xl">
             {shoe.price} $
           </div>
-          <Select title={"QTY"} options={QTY} className="" />
-          <Select title={"SIZE"} options={SIZES} className="" />
+          <Select value={form.qty} onChange={(qty: number) => setForm({ ...form, qty })} title={"QTY"} options={QTY} className="" />
+          <Select value={form.size} onChange={(size: number) => setForm({ ...form, size })} title={"SIZE"} options={SIZES} className="" />
         </div>
         {/* Shoe buttons and links */}
         <div className="space-x-10">
           <button
+            onClick={() => onClickAdd(shoe, form.qty, form.size)}
             className="button-press-anim h-14 w-44 bg-black text-white
              hover:bg-gray-900 active:bg-gray-700 dark:bg-white dark:text-black"
           >

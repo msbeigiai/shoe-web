@@ -2,7 +2,7 @@ import { BiMoon } from "react-icons/bi";
 import { BiSun } from "react-icons/bi";
 import '@fontsource-variable/nunito-sans';
 import { useEffect, useState } from 'react';
-import Cart from './components/Cart';
+import Cart, { FakeCart } from './components/Cart';
 import Nav from "./components/Nav";
 import NewArrivalSection from './components/NewArrivalSection';
 import ShoeDetails from "./components/ShoeDetails";
@@ -13,6 +13,10 @@ import { ItemType, SHOE_LIST } from './Constant';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentShoe, setCurrentShoe] = useState<ItemType>(SHOE_LIST[2]);
+  const [cartItems, setCartItems] = useState<FakeCart[]>([])
+
+  console.log(cartItems);
+
 
   useEffect(() => {
     const isDarkMode = localStorage.getItem('isDarkMode')
@@ -28,16 +32,30 @@ function App() {
     } else localStorage.setItem('isDarkMode', 'false');
   }
 
+  const addToCart = (product: ItemType, qty: number, size: number) => {
+    if (qty && size) {
+      const updatedCartItems = [...cartItems]
+      const existingItemIndex = cartItems.findIndex(item => item.product.id === product.id)
+      if (existingItemIndex > -1) {
+        updatedCartItems[existingItemIndex].qty = qty;
+        updatedCartItems[existingItemIndex].size = size;
+      } else {
+        updatedCartItems.push({ product, qty, size })
+      }
+
+      setCartItems(updatedCartItems);
+    }
+  };
 
   return (
     <div className="animate-fadeIn p-10 xl:px-24 dark:bg-night">
       <Nav onClickShoppingButton={() => setIsSidebarOpen(true)} />
-      <ShoeDetails shoe={currentShoe} />
+      <ShoeDetails shoe={currentShoe} onClickAdd={addToCart} />
       <NewArrivalSection items={SHOE_LIST} onClickCard={setCurrentShoe} />
       <Sidebar
         isOpen={isSidebarOpen}
         onClickClose={() => setIsSidebarOpen(false)}>
-        <Cart cartItems={[]} />
+        <Cart cartItems={cartItems} />
       </Sidebar>
       <div className='fixed bottom-4 right-4'>
         <button onClick={toggleDarkMode}
